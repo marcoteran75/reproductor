@@ -6,86 +6,27 @@
   <title>Video Privado</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       background-color: #0e1621;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       padding: 20px;
       line-height: 1.5;
-      user-select: none;
     }
-
-    .main-layout {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 18px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .side-column {
-      width: 160px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-
-    .banner {
-      background-color: #1a2733;
-      border: 1px solid #2b3a4a;
-      border-radius: 12px;
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .banner:hover {
-      border-color: #2aabee;
-      transform: translateY(-2px);
-    }
-    .banner a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      padding: 12px 10px;
-    }
-    .banner-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #2aabee;
-      margin-bottom: 6px;
-    }
-    .banner-text {
-      font-size: 12px;
-      color: #b0bec5;
-      line-height: 1.4;
-    }
-    .banner.ad {
-      min-height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(145deg, #1a2733, #15202b);
-    }
-
     .container {
-      flex: 1;
-      max-width: 680px;
+      max-width: 800px;
+      margin: 0 auto;
       background-color: #17212b;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
-
     .header {
       background-color: #242f3d;
       padding: 14px 18px;
       display: flex;
       align-items: center;
       gap: 12px;
-      border-bottom: 1px solid #0e1621;
     }
     .avatar {
       width: 42px; height: 42px;
@@ -103,18 +44,18 @@
       background: #000;
       aspect-ratio: 16/9;
     }
-    video, iframe {
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      display: block;
       border: none;
-      outline: none;
     }
 
     .content { padding: 20px; }
     .content h2 { font-size: 18px; margin-bottom: 10px; }
     .content p { font-size: 15px; color: #e0e0e0; margin-bottom: 20px; white-space: pre-wrap; }
-    
+
     .download-section {
       background-color: #1a2733;
       border-radius: 12px;
@@ -136,15 +77,11 @@
       text-decoration: none;
       font-weight: 500;
       margin-bottom: 10px;
-      transition: background 0.2s;
     }
-    .download-btn:hover { background-color: #229ed9; }
     .download-btn.secondary {
       background-color: #242f3d;
       border: 1px solid #2b3a4a;
     }
-    .download-btn.secondary:hover { background-color: #2b3a4a; }
-    
     .footer-note {
       text-align: center;
       padding: 14px;
@@ -152,164 +89,66 @@
       color: #8b9bab;
       border-top: 1px solid #0e1621;
     }
-
-    @media (max-width: 1000px) {
-      .side-column { display: none; }
-    }
   </style>
 </head>
 <body>
 
-  <div class="main-layout">
+  <div class="container">
+    <div class="header">
+      <div class="avatar">V</div>
+      <div class="header-info">
+        <h3 id="titulo">Título del video</h3>
+        <span>Filemoon</span>
+      </div>
+    </div>
 
-    <!-- LADO IZQUIERDO -->
-    <div class="side-column">
-      <div class="banner ad">
-        <a href="https://tu-enlace-publicidad-1.com" target="_blank">
-          <div class="banner-title">Publicidad 1</div>
-          <div class="banner-text">Espacio para anuncio</div>
+    <div class="video-wrapper">
+      <!-- AQUÍ VA EL IFRAME DE FILEMOON -->
+      <iframe 
+        id="player"
+        src="" 
+        allowfullscreen 
+        allow="autoplay; fullscreen; encrypted-media"
+        scrolling="no">
+      </iframe>
+    </div>
+
+    <div class="content">
+      <h2 id="titulo2">Título del video</h2>
+      <p id="descripcion">Descripción del video...</p>
+
+      <div class="download-section">
+        <h3>Descargar versión completa</h3>
+        <a href="https://tu-enlace-de-pago-1.com" class="download-btn" target="_blank">
+          Descargar HD - $X.XX
         </a>
-      </div>
-      <div class="banner ad">
-        <a href="https://tu-enlace-publicidad-2.com" target="_blank">
-          <div class="banner-title">Publicidad 2</div>
-          <div class="banner-text">Espacio para anuncio</div>
-        </a>
-      </div>
-      <div class="banner ad">
-        <a href="https://tu-enlace-publicidad-3.com" target="_blank">
-          <div class="banner-title">Publicidad 3</div>
-          <div class="banner-text">Espacio para anuncio</div>
+        <a href="https://tu-enlace-de-pago-2.com" class="download-btn secondary" target="_blank">
+          Descargar 4K - $X.XX
         </a>
       </div>
     </div>
 
-    <!-- CONTENIDO CENTRAL -->
-    <div class="container">
-      <div class="header">
-        <div class="avatar">V</div>
-        <div class="header-info">
-          <h3 id="titulo">Título del video</h3>
-          <span id="categoria">milf</span>
-        </div>
-      </div>
-
-      <div class="video-wrapper">
-        <video 
-          id="video"
-          controls 
-          controlsList="nodownload noplaybackrate noremoteplayback"
-          disablePictureInPicture
-          oncontextmenu="return false;"
-          preload="metadata"
-          playsinline>
-          <!-- Los subtítulos se agregan por JavaScript -->
-        </video>
-      </div>
-
-      <div class="content">
-        <h2 id="titulo2">Título del video</h2>
-        <p id="descripcion">Descripción...</p>
-
-        <div class="download-section">
-          <h3>Descargar versión completa</h3>
-          <a href="https://tu-enlace-de-pago-1.com" class="download-btn" target="_blank">
-            Descargar HD - $X.XX
-          </a>
-          <a href="https://tu-enlace-de-pago-2.com" class="download-btn secondary" target="_blank">
-            Descargar 4K - $X.XX
-          </a>
-        </div>
-      </div>
-
-      <div class="footer-note">
-        Video protegido · La descarga gratuita está deshabilitada
-      </div>
+    <div class="footer-note">
+      Video protegido · La descarga gratuita está deshabilitada
     </div>
-
-    <!-- LADO DERECHO -->
-    <div class="side-column">
-      <div class="banner">
-        <a href="https://tu-enlace-peticiones.com" target="_blank">
-          <div class="banner-title">Peticiones</div>
-          <div class="banner-text">¿Quieres un video personalizado?</div>
-        </a>
-      </div>
-      <div class="banner">
-        <a href="https://tu-enlace-donaciones.com" target="_blank">
-          <div class="banner-title">Donaciones</div>
-          <div class="banner-text">Apoya el contenido</div>
-        </a>
-      </div>
-      <div class="banner">
-        <a href="https://tu-enlace-redes.com" target="_blank">
-          <div class="banner-title">Redes Sociales</div>
-          <div class="banner-text">Sígueme en Telegram</div>
-        </a>
-      </div>
-    </div>
-
   </div>
 
   <script>
     // ========== CONFIGURA AQUÍ ==========
     const config = {
       titulo: "quitandole el novio a la hija",
-      categoria: "milf",
-      descripcion: "Descripción del video.\nPuedes usar varias líneas.",
+      descripcion: "Descripción del video.",
       
-      // Enlace DIRECTO del video (.mp4)
-      videoUrl: "https://mxdrop.sx/e/nll0m3xvslq418l  ",
-      
-      // Enlace del archivo .vtt
-      subtitlesUrl: "https://filemoon.org/es/2bJG87O0zOBE/file "
+      // Pon el enlace de embed de Filemoon (el que tiene /e/ o el que te da Filemoon)
+      videoUrl: " https://mxdrop.sx/e/nll0m3xvslq418l"
     };
 
-    // Aplicar textos
     document.getElementById('titulo').textContent = config.titulo;
     document.getElementById('titulo2').textContent = config.titulo;
-    document.getElementById('categoria').textContent = config.categoria;
     document.getElementById('descripcion').textContent = config.descripcion;
 
-    const video = document.getElementById('video');
-
-    // 1. Cargar el video primero (sin crossorigin)
-    video.src = config.videoUrl.trim();
-
-    // 2. Intentar cargar subtítulos de forma segura
-    if (config.subtitlesUrl) {
-      const track = document.createElement('track');
-      track.kind = 'subtitles';
-      track.label = 'Español';
-      track.srclang = 'es';
-      track.src = config.subtitlesUrl.trim();
-      track.default = true;
-
-      video.appendChild(track);
-
-      // Intentar activar los subtítulos cuando estén listos
-      track.addEventListener('load', () => {
-        try {
-          track.track.mode = 'showing';
-        } catch (e) {}
-      });
-
-      // Respaldo por si el evento load no dispara
-      setTimeout(() => {
-        if (video.textTracks && video.textTracks.length > 0) {
-          video.textTracks[0].mode = 'showing';
-        }
-      }, 1000);
-    }
-
-    // Protecciones
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey && (e.key === 's' || e.key === 'S')) || e.key === 'F12') {
-        e.preventDefault();
-        alert('La descarga gratuita está deshabilitada');
-      }
-    });
+    // Cargar el iframe
+    document.getElementById('player').src = config.videoUrl.trim();
   </script>
 </body>
 </html>
